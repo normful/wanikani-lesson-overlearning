@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         WaniKani Lesson Overlearning
-// @namespace    http://tampermonkey.net/
+// @namespace    normful
 // @version      0.1.0
 // @description  Always click the not ready button at the end of lessons
 // @author       Norman Sue
