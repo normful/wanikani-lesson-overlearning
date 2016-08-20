@@ -1,23 +1,42 @@
 // ==UserScript==
 // @name         WaniKani Lesson Overlearning
 // @namespace    normful
-// @version      0.1.0
-// @description  Always click the not ready button at the end of lessons
+// @version      0.2.0
+// @description  Always automatically click the 'Need more time' button after lessons to enable overlearning.
 // @author       Norman Sue
-// @match        https://www.wanikani.com/lesson/session
+// @include      http://www.wanikani.com/lesson/session
+// @include      https://www.wanikani.com/lesson/session
 // @run-at       document-end
 // @grant        none
 // ==/UserScript==
 
 (function() {
     'use strict';
-    var bindHandler = function() {
-        $('#next-btn').on("click", function() {
-            var notReadyButton = $("#quiz-ready-read-lessons");
-            if (notReadyButton.is(":visible")) {
-                notReadyButton.click();
+
+    var bindHandlers = function() {
+        var needMoreTimeButton = $('#quiz-ready-read-lessons');
+
+        var clickNeedMoreTimeButton = function() {
+            if (needMoreTimeButton.is(':visible')) {
+                needMoreTimeButton.click();
             }
-        });
+        };
+
+        var keyHandler = function(event) {
+            var isRightArrow = event.which === 39;
+            var isEnter      = event.which === 13;
+            var isD          = event.which === 68;
+
+            if (isRightArrow || isEnter || isD) {
+                clickNeedMoreTimeButton();
+            }
+        };
+
+        $('#next-btn').on('click', clickNeedMoreTimeButton);
+
+        $(document).on('keyup', keyHandler);
     };
-    setTimeout(bindHandler, 5000);
+
+    setTimeout(bindHandlers, 5000);
+
 })();
