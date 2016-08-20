@@ -4,7 +4,7 @@ This Userscript will automatically click the "Need more time" button at the end 
 
 ## Installation
 
-Install with [Tampermonkey](https://tampermonkey.net/) from Greasyfork.
+Download it from <https://greasyfork.org/en/scripts/22459-wanikani-lesson-overlearning> and install it with [Tampermonkey](https://tampermonkey.net/).
 
 ## Usage
 
